@@ -1,0 +1,29 @@
+from guizero import App, Text, PushButton
+
+def forward1():
+    output.value = "1"
+def backward2():
+    output.value = "2"
+def right3():
+    output.value = "3"
+def left4():
+    output.value = "4"
+def launch5():
+    output.value = "5"
+def increase_speed6():
+    output.value = "6"
+def decrease_speed7():
+    output.value = "7"
+
+app = App(title="ASK", layout="grid")
+output = Text(app, text="", color="red", grid=[1,3])
+forward = PushButton (app, forward1, text="forward", grid=[1,0])
+backward = PushButton (app, backward2, text="backward", grid=[1,2])
+right = PushButton (app, right3, text="right", grid=[2,1])
+left = PushButton (app, left4, text="left", grid=[0,1])
+launch = PushButton (app, launch5, text="launch", grid=[1,1])
+increase_speed = PushButton (app, increase_speed6, text="+ speed", grid=[4,0])
+decrease_speed = PushButton (app, decrease_speed7, text="- speed", grid=[4,2])
+
+# AddGUI widget code here
+app.display()
