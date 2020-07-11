@@ -16,8 +16,8 @@ def callback_number(msg):
     dat = msg.data
 
 if __name__ == '__main__':
-    ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-    ser.flush()
+    # ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+    # ser.flush()
 
     rospy.init_node('ClassicNode')
 
@@ -27,8 +27,9 @@ if __name__ == '__main__':
     # Now we start the real code for control of the vehicle
     while not rospy.is_shutdown() and not done:
         # Delete this when sending full user data is working
-        ser.write(str(dat).encode('utf-8'))
+        # ser.write(str(dat).encode('utf-8'))
         # msg = Int16MultiArray()
         # msg.data = pub_array
         # pub.publish(msg)
         # rate.sleep()
+        print(dat)

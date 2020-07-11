@@ -1,29 +1,43 @@
-from guizero import App, Text, PushButton
+import wx
 
-def forward1():
-    output.value = "1"
-def backward2():
-    output.value = "2"
-def right3():
-    output.value = "3"
-def left4():
-    output.value = "4"
-def launch5():
-    output.value = "5"
-def increase_speed6():
-    output.value = "6"
-def decrease_speed7():
-    output.value = "7"
+def onButton1(event):
+    print "1"
+def onButton2(event):
+    print "2"
+def onButton3(event):
+    print "3"
+def onButton4(event):
+    print "4"
+def onButton5(event):
+    print "5"
+def onButton6(event):
+    print "6"
+def onButton7(event):
+    print "7"
+# Set up window
+app = wx.App()
+frame = wx.Frame(None, -1, 'win.py')
+frame.SetDimensions(0,0,500,500)
 
-app = App(title="ASK", layout="grid")
-output = Text(app, text="", color="red", grid=[1,3])
-forward = PushButton (app, forward1, text="forward", grid=[1,0])
-backward = PushButton (app, backward2, text="backward", grid=[1,2])
-right = PushButton (app, right3, text="right", grid=[2,1])
-left = PushButton (app, left4, text="left", grid=[0,1])
-launch = PushButton (app, launch5, text="launch", grid=[1,1])
-increase_speed = PushButton (app, increase_speed6, text="+ speed", grid=[4,0])
-decrease_speed = PushButton (app, decrease_speed7, text="- speed", grid=[4,2])
 
-# AddGUI widget code here
-app.display()
+panel = wx.Panel(frame, wx.ID_ANY)
+
+#Buttons
+forward1 = wx.Button(panel, wx.ID_ANY, 'Forward', (105, 10))
+forward1.Bind(wx.EVT_BUTTON, onButton1)
+backward2 = wx.Button(panel, wx.ID_ANY, 'Backward', (105, 200))
+backward2.Bind(wx.EVT_BUTTON, onButton2)
+right3 = wx.Button(panel, wx.ID_ANY, 'Right', (200, 105))
+right3.Bind(wx.EVT_BUTTON, onButton3)
+left4 = wx.Button(panel, wx.ID_ANY, 'Left', (10, 105))
+left4.Bind(wx.EVT_BUTTON, onButton4)
+launch5 = wx.Button(panel, wx.ID_ANY, 'Launch', (105, 105))
+launch5.Bind(wx.EVT_BUTTON, onButton5)
+inc_speed6 = wx.Button(panel, wx.ID_ANY, '+ Speed', (300, 50))
+inc_speed6.Bind(wx.EVT_BUTTON, onButton6)
+dec_speed7 = wx.Button(panel, wx.ID_ANY, '- Speed', (300, 150))
+dec_speed7.Bind(wx.EVT_BUTTON, onButton7)
+#Show window
+frame.Show()
+frame.Centre()
+app.MainLoop()
