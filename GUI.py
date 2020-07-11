@@ -3,7 +3,7 @@
 ## Summary: This code is used to create a GUI for the user to control the ClassicBot. These controls are then sent over
 ##          ROS to the RaspberryPI where they can be then manipulated and sent to the arduino for hardware control.
 
-# import numpy as np
+import numpy as np
 import rospy
 import wx
 from std_msgs.msg import Int16, Int16MultiArray
@@ -14,37 +14,51 @@ global msg
 # AddGUI widget code here
 def onButton1(event):
     print "1"
-    msg = 1
+    pub_array = np.array([1])
+    msg = Int16MultiArray()
+    msg.data = pub_array
     pub.publish(msg)
     rate.sleep()
 def onButton2(event):
     print "2"
-    msg = 2
+    pub_array = np.array([2])
+    msg = Int16MultiArray()
+    msg.data = pub_array
     pub.publish(msg)
     rate.sleep()
 def onButton3(event):
     print "3"
-    msg = 3
+    pub_array = np.array([3])
+    msg = Int16MultiArray()
+    msg.data = pub_array
     pub.publish(msg)
     rate.sleep()
 def onButton4(event):
     print "4"
-    msg = 4
+    pub_array = np.array([4])
+    msg = Int16MultiArray()
+    msg.data = pub_array
     pub.publish(msg)
     rate.sleep()
 def onButton5(event):
     print "5"
-    msg = 5
+    pub_array = np.array([5])
+    msg = Int16MultiArray()
+    msg.data = pub_array
     pub.publish(msg)
     rate.sleep()
 def onButton6(event):
     print "6"
-    msg = 6
+    pub_array = np.array([6])
+    msg = Int16MultiArray()
+    msg.data = pub_array
     pub.publish(msg)
     rate.sleep()
 def onButton7(event):
     print "7"
-    msg = 7
+    pub_array = np.array([7])
+    msg = Int16MultiArray()
+    msg.data = pub_array
     pub.publish(msg)
     rate.sleep()
 
@@ -80,7 +94,7 @@ if __name__ == '__main__':
 
     rospy.init_node("GUI_Node")
 
-    pub = rospy.Publisher("/ClassicNode", Int16, queue_size=10)
+    pub = rospy.Publisher("/ClassicTopic", Int16MultiArray, queue_size=10)
     rate = rospy.Rate(1000)
 
     while not rospy.is_shutdown():

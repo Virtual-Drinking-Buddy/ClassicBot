@@ -4,16 +4,21 @@
 ##
 import serial
 import time
+import numpy as np
 import rospy
 from std_msgs.msg import Int16, Int16MultiArray
 
-done = False
+command_msg = 0
+i = 0
 
+done = False
+test = 0
 
 # Need to update this to read in a vector from the computer running user inputs
 def callback_number(msg):
-    global dat
+    global command_msg
     dat = msg.data
+    command_msg = dat[0]
 
 if __name__ == '__main__':
     # ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
@@ -21,7 +26,7 @@ if __name__ == '__main__':
 
     rospy.init_node('ClassicNode')
 
-    sub = rospy.Subscriber("/GUINode", Int16, callback_number)
+    sub = rospy.Subscriber("/ClassicTopic", Int16MultiArray, callback_number)
 
     rate = rospy.Rate(1000)
     # Now we start the real code for control of the vehicle
@@ -32,4 +37,9 @@ if __name__ == '__main__':
         # msg.data = pub_array
         # pub.publish(msg)
         # rate.sleep()
-        print(dat)
+
+        print(command_msg)
+
+
+        # save = command_msg
+
